@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-
 namespace Ado.Net_in_Wpf.Commands
 {
     public class StartCommand : ICommand
@@ -51,3 +50,4 @@ namespace Ado.Net_in_Wpf.Commands
         }
     }
 }
+
