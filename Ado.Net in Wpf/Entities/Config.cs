@@ -16,9 +16,13 @@ namespace Ado.Net_in_Wpf.Entities
         {
             this.DatabaseConnection = databaseConnection;
         }
+        public Config()
+        {
+                
+        }
         public void SeriailizeToJson()
         {
-            using(StreamWriter sw=new StreamWriter("config.json"))
+            using (StreamWriter sw = new StreamWriter("config.json"))
             {
                 var item = JsonConvert.SerializeObject(DatabaseConnection);
                 sw.WriteLine(item);
@@ -31,7 +35,10 @@ namespace Ado.Net_in_Wpf.Entities
         }
         public void DeserializeFromJson()
         {
-            
+            var text = File.ReadAllText("config.json");
+            var item = JsonConvert.DeserializeObject<DatabaseConnection>(text);
+            NewDatabaseConnection = new DatabaseConnection();
+            NewDatabaseConnection = item;
         }
         public DatabaseConnection GetConnectionElement()
         {

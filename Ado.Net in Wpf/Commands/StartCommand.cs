@@ -32,29 +32,35 @@ namespace Ado.Net_in_Wpf.Commands
             {
                 MessageBoxResult messageBox = MessageBox.Show("Okay");
                 StudentViewModel = new StudentViewModel();
+                Config config = new Config();
+                config.DeserializeFromJson();
+                App.DB = new DataAccessLayer(config.GetConnectionElement());
+      
+
+                StudentViewModel.AllStudents = new ObservableCollection<Student>(App.DB.GetStudents());
                 StudentView studentView = new StudentView(StudentViewModel);
                 studentView.ShowDialog();
-                StudentViewModel.AllStudents = new ObservableCollection<Student>(App.DB.GetStudents());
             }
             else
             {
                 MessageBoxResult messageBox = MessageBox.Show("No");
-
-
                 ////////////////////after open DBConnectionView
                 //DataBaseConnectionViewModel dataBaseConnectionVM = new DataBaseConnectionViewModel();
                 //DatabaseConnectionView databaseConnectionView = new DatabaseConnectionView(dataBaseConnectionVM);
-                
+
                 //databaseConnectionView.ShowDialog();
                 DatabaseConnection databaseConnection = new DatabaseConnection()
                 {
-                    DataBaseName = "dbname",
-                    DataSource = "dsource",
-                    Password = "pswrd",
-                    UserId = "Userid"
+                    DataBaseName = "StudentDb",
+                    DataSource = @"DOCUMENTS-ПК\MYSQLSERVERMSSQL",
+                    IntergratedSecurity = true,
+                    UserId = "",
+                    Password = ""
                 };
                 Config config = new Config(databaseConnection);
+
                 config.SeriailizeToJson();
+
             }
         }
     }

@@ -12,7 +12,7 @@ namespace Ado.Net_in_Wpf.Entities
         public string DataBaseName { get; set; }
         public string UserId { get; set; }
         public string Password { get; set; }
-        public string IntergratedSecurity { get; set; }
+        public bool IntergratedSecurity { get; set; }
     }
 }
 
