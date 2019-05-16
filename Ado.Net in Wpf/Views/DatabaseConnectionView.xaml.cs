@@ -16,21 +16,16 @@ using System.Windows.Shapes;
 namespace Ado.Net_in_Wpf.Views
 {
     /// <summary>
-    /// Interaction logic for StudentView.xaml
+    /// Interaction logic for DatabaseConnectionView.xaml
     /// </summary>
-    public partial class StudentView : Window
+    public partial class DatabaseConnectionView : Window
     {
-        public StudentViewModel StudentViewModel { get; set; }
-        public StudentView(StudentViewModel StudentViewModel)
+        public DataBaseConnectionViewModel DBConnectionVM { get; set; }
+        public DatabaseConnectionView(DataBaseConnectionViewModel DBConnectionVM)
         {
             InitializeComponent();
-            this.StudentViewModel = StudentViewModel;
-            DataContext = StudentViewModel;
-        }
-
-        private void ExitBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
+            this.DBConnectionVM = DBConnectionVM;
+            DataContext = DBConnectionVM;
         }
     }
 }

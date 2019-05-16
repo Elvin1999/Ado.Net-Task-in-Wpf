@@ -1,5 +1,6 @@
 ﻿using Ado.Net_in_Wpf.Entities;
 using Ado.Net_in_Wpf.ViewModels;
+using Ado.Net_in_Wpf.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -32,20 +33,31 @@ namespace Ado.Net_in_Wpf.Commands
             {
                 MessageBoxResult messageBox = MessageBox.Show("Okay");
                 StudentViewModel = new StudentViewModel();
-                StudentViewModel.AllStudents = new ObservableCollection<Student>(App.DB.GetStudents());
+                StudentView studentView = new StudentView(StudentViewModel);
+                studentView.ShowDialog();
+                //StudentViewModel.AllStudents = new ObservableCollection<Student>(App.DB.GetStudents());
             }
             else
             {
-                MessageBoxResult messageBox = MessageBox.Show("No"); DatabaseConnection databaseConnection = new DatabaseConnection()
-                {
-                    DataBaseName = "dbname",
-                    DataSource = "dsource",
-                    Password = "pswrd",
-                    UserId = "Userid"
-                };
+                MessageBoxResult messageBox = MessageBox.Show("No");
 
-                Config config = new Config(databaseConnection);
-                config.SeriailizeToJson();
+
+
+
+                ////////////////////after open DBConnectionView
+                DataBaseConnectionViewModel dataBaseConnectionVM = new DataBaseConnectionViewModel();
+                DatabaseConnectionView databaseConnectionView = new DatabaseConnectionView(dataBaseConnectionVM);
+                
+                databaseConnectionView.ShowDialog();
+                //DatabaseConnection databaseConnection = new DatabaseConnection()
+                //{
+                //    DataBaseName = "dbname",
+                //    DataSource = "dsource",
+                //    Password = "pswrd",
+                //    UserId = "Userid"
+                //};
+                //Config config = new Config(dbconnection);
+                //config.SeriailizeToJson();
             }
         }
     }
