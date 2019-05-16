@@ -35,8 +35,6 @@ namespace Ado.Net_in_Wpf.Commands
                 Config config = new Config();
                 config.DeserializeFromJson();
                 App.DB = new DataAccessLayer(config.GetConnectionElement());
-      
-
                 StudentViewModel.AllStudents = new ObservableCollection<Student>(App.DB.GetStudents());
                 StudentView studentView = new StudentView(StudentViewModel);
                 studentView.ShowDialog();

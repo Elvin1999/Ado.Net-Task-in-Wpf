@@ -25,6 +25,7 @@ namespace Ado.Net_in_Wpf
             builder.Password = DatabaseConnection.Password;
             ConnectionString = builder.ToString();
         }
+        int counter = 0;
         public List<Student> GetStudents()
         {
             using (SqlConnection conn = new SqlConnection(ConnectionString))
@@ -39,34 +40,19 @@ namespace Ado.Net_in_Wpf
                     while (reader.Read())
                     {
                         Student student = new Student();
-
-                        //product.Id = reader.GetInt32(0);
-                        //product.Name = reader.GetString(1);
-                        //product.Barcode = reader.GetString(2);
-                        //product.Price = reader.GetDecimal(3);
-
-                        //product.Id = reader.GetInt32(reader.GetOrdinal("Id"));
-                        //product.Name = reader.GetString(reader.GetOrdinal("Name"));
-                        //product.Barcode = reader.GetString(reader.GetOrdinal("Barcode"));
-                        //product.Price = reader.GetDecimal(reader.GetOrdinal("Price"));
-
-
-                        //product.Price = reader.IsDBNull(reader.GetOrdinal("Price")) ? null : (decimal?) reader.GetDecimal(reader.GetOrdinal("Price"));
-
-                        //product.Id = Convert.ToInt32(reader[0]);
-                        //product.Name = Convert.ToString(reader[1]);
-                        //product.Barcode = Convert.ToString(reader[2]);
-                        //product.Price = Convert.ToDecimal(reader[3]);
-
+                        student.No = ++counter;
                         student.Id = Convert.ToInt32(reader[nameof(student.Id)]);
                         student.Name = Convert.ToString(reader[nameof(student.Name)]);
                         student.Surname = Convert.ToString(reader[nameof(student.Surname)]);
                         student.Age = Convert.ToInt32(reader[nameof(student.Age)]);
-                        student.IsMonitor = Convert.ToBoolean(reader[nameof(student.IsMonitor)]);
-                        MessageBoxResult mb = MessageBox.Show(student.Name);
+                        //student.IsMonitor = Convert.ToBoolean(reader[nameof(student.IsMonitor)]);
+                        //student.IsMonitor = reader.GetBoolean(reader.GetOrdinal("IsMonitor"));
+                       
+                        var text = Convert.ToString(reader[nameof(student.IsMonitor)]);
+                        student.IsMonitor = Convert.ToBoolean(text);
+          
                         //student.Filial.Name = Convert.ToString(reader["Filial_Name"]);
                         //student.Note = reader.IsDBNull(reader.GetOrdinal("Note")) ? null : reader.GetString(reader.GetOrdinal("Note"));
-
                         students.Add(student);
                     }
                     return students;

@@ -13,7 +13,24 @@ namespace Ado.Net_in_Wpf.Entities
         public string Name { get; set; }
         public string Surname { get; set; }
         public int Age { get; set; }
-        public bool IsMonitor { get; set; }
+        private bool isMonitor;
+        public bool IsMonitor { get {
+
+                return IsMonitor;
+                    } set {
+                isMonitor = value;
+                if (isMonitor)
+                {
+                    Monitor = "Yes";
+                }
+                else
+                {
+                    Monitor = "No";
+                }
+            } }
+        public string Monitor { get; set; }
+
+
 
         public Student Clone()
         {

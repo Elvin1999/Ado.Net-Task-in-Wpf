@@ -26,7 +26,6 @@ namespace Ado.Net_in_Wpf.ViewModels
                
             }
         }
-
         private Student selectedStudent;
         public Student SelectedStudent
         {
@@ -50,8 +49,7 @@ namespace Ado.Net_in_Wpf.ViewModels
         {
             get
             {
-
-                return AllStudents;
+                return allStudents;
             }
             set
             {

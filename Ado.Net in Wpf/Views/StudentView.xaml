@@ -102,20 +102,20 @@
 
                     <Grid.Width>670</Grid.Width>
                     <Grid.Height>250</Grid.Height>
-                    <ListView Name="listViewFilials" ItemsSource="{Binding AllClients}" SelectedItem="{Binding SelectedClient}" Width="670" HorizontalAlignment="Left" Background="{StaticResource FirstColor}">
+                    <ListView Name="listViewFilials" ItemsSource="{Binding AllStudents}" SelectedItem="{Binding SelectedClient}" Width="670" HorizontalAlignment="Left" Background="{StaticResource FirstColor}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="No" Width="85">
+                                <GridViewColumn Header="No" Width="50">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Padding="5,0" Text="{Binding No}"></TextBlock>
+                                            <TextBlock Padding="5,0" Text="{Binding No}" TextAlignment="Center"></TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
                                 <GridViewColumn Header="Name" Width="120">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Padding="5,0" Text="{Binding Name}"></TextBlock>
+                                            <TextBlock Padding="5,0" Text="{Binding Name}" TextAlignment="Center"></TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -125,7 +125,7 @@
                                 <GridViewColumn Header="Surname" Width="140">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Padding="5,0" Text="{Binding Surname}"></TextBlock>
+                                            <TextBlock Padding="5,0" Text="{Binding Surname}" TextAlignment="Center"></TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -133,7 +133,7 @@
                                 <GridViewColumn Header="Age" Width="60">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Padding="5,0" Text="{Binding Age}"></TextBlock>
+                                            <TextBlock Padding="5,0" Text="{Binding Age}" TextAlignment="Center"></TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -141,7 +141,7 @@
                                 <GridViewColumn Header="Connection DT" Width="140">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Padding="5,0" Text="{Binding ConnectionDT}"></TextBlock>
+                                            <TextBlock Padding="5,0" Text="{Binding ConnectionDT}" TextAlignment="Center"></TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -149,7 +149,7 @@
                                 <GridViewColumn Header="IsMoniter" Width="120">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Padding="5,0" Text="{Binding IsMoniter}"></TextBlock>
+                                            <TextBlock Padding="5,0" Text="{Binding Monitor}" TextAlignment="Center"></TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
