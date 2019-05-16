@@ -6,14 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-
 namespace Ado.Net_in_Wpf
 {
    public class DataAccessLayer
     {
         public string ConnectionString { get; set; }
-        public DatabaseConnection  DatabaseConnection { get; set; }
-        
+        public DatabaseConnection  DatabaseConnection { get; set; }   
         public DataAccessLayer(DatabaseConnection databaseConnection)
         {
             DatabaseConnection = databaseConnection;
@@ -81,3 +79,9 @@ namespace Ado.Net_in_Wpf
 
     }
 }
+
+
+
+
+
+

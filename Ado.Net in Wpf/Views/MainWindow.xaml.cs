@@ -27,5 +27,9 @@ namespace Ado.Net_in_Wpf
             MainViewModel mainViewModel = new MainViewModel();
             DataContext = mainViewModel;
         }
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

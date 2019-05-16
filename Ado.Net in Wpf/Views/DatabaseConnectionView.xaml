@@ -5,12 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ado.Net_in_Wpf.Views"
         mc:Ignorable="d"
-        Title="DatabaseConnectionView" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="DatabaseConnectionView"
+        Height="600" Width="800" WindowStyle="None" AllowsTransparency="True"
+        Background="Transparent" WindowStartupLocation="CenterScreen"
+        >
     <Grid>
+        <Canvas>
+            <Rectangle RadiusX="20" RadiusY="20" Width="700" Height="600" Fill="{StaticResource FirstColor}">
+                <Canvas.Left>50</Canvas.Left>
+            </Rectangle>
+            <Label Content="Database Connection" FontSize="35" FontFamily="Comic Sans MS" Margin="70,0,0,0"></Label>
 
-        <Label Content="Database Connection" FontSize="35" FontFamily="Comic Sans MS" HorizontalAlignment="Center"></Label>
-
-        <StackPanel Orientation="Horizontal" Margin="50,100,0,0">
+        <StackPanel Orientation="Horizontal" Margin="100,100,0,0">
             <StackPanel Orientation="Vertical">
                 <Label Content="Server Name" FontSize="20"></Label>
                 <Label Content="Database Name" FontSize="20"></Label>
@@ -32,7 +38,7 @@
                 </Button>
             </StackPanel>
         </StackPanel>
-      
-        
+
+            </Canvas>
     </Grid>
 </Window>

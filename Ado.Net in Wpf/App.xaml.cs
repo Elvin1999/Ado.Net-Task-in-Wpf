@@ -25,6 +25,7 @@ namespace Ado.Net_in_Wpf
             //    Password=""
             //};
             //DB = new DataAccessLayer(databaseConnection);
+
         }
         public static DataAccessLayer DB;
         static void MyHandler(object sender, UnhandledExceptionEventArgs args)

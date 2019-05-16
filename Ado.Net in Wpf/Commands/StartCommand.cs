@@ -1,6 +1,6 @@
 ﻿using Ado.Net_in_Wpf.Entities;
 using Ado.Net_in_Wpf.ViewModels;
-using Ado.Net_in_Wpf.Views;
+using Ado.Net_in_Wpf.Views;             
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -43,10 +43,9 @@ namespace Ado.Net_in_Wpf.Commands
             {
                 MessageBoxResult messageBox = MessageBox.Show("No");
                 ////////////////////after open DBConnectionView
-                //DataBaseConnectionViewModel dataBaseConnectionVM = new DataBaseConnectionViewModel();
-                //DatabaseConnectionView databaseConnectionView = new DatabaseConnectionView(dataBaseConnectionVM);
-
-                //databaseConnectionView.ShowDialog();
+                DataBaseConnectionViewModel dataBaseConnectionVM = new DataBaseConnectionViewModel();
+                DatabaseConnectionView databaseConnectionView = new DatabaseConnectionView(dataBaseConnectionVM);
+                databaseConnectionView.ShowDialog();
                 DatabaseConnection databaseConnection = new DatabaseConnection()
                 {
                     DataBaseName = "StudentDb",

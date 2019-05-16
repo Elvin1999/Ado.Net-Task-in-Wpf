@@ -5,12 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ado.Net_in_Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="600" Width="800" WindowStyle="None" AllowsTransparency="True"
+        Background="Transparent" WindowStartupLocation="CenterScreen"
+        >
     <Grid>
-        <StackPanel>
-            <Button Content="Start" Width="200" Height="50" Background="Aqua" HorizontalAlignment="Center"
-                 Command="{Binding StartCommand}"  Margin="150" FontSize="30" FontFamily="Comic Sans MS"
+        <Canvas>
+            <Rectangle RadiusX="20" RadiusY="20" Width="700" Height="600" Fill="{StaticResource FirstColor}">
+                <Canvas.Left>50</Canvas.Left>
+            </Rectangle>
+            <Button Width="50" Height="50" Name="ExitBtn"  Background="{StaticResource FirstColor}" Margin="670,20,0,0" Click="ExitBtn_Click"
+                                
+                                Content="X" FontFamily="Comic Sans MS" FontSize="24" Foreground="Black" Style="{StaticResource NotDefaultButton}"
+                                >
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <StackPanel>
+                <Button Content="Start" Width="200" Height="100" Background="{StaticResource FirstColor}"
+                 Command="{Binding StartCommand}"  Margin="300" FontSize="30" FontFamily="Comic Sans MS"
                     ></Button>
-        </StackPanel>
+            </StackPanel>
+        </Canvas>
     </Grid>
 </Window>
