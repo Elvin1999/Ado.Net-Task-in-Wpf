@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ado.Net_in_Wpf.Entities
 {
-   public class Student
+    public class Student
     {
         public int Id { get; set; }
         public int No { get; set; }
@@ -14,10 +14,14 @@ namespace Ado.Net_in_Wpf.Entities
         public string Surname { get; set; }
         public int Age { get; set; }
         private bool isMonitor;
-        public bool IsMonitor { get {
-
+        public bool IsMonitor
+        {
+            get
+            {
                 return IsMonitor;
-                    } set {
+            }
+            set
+            {
                 isMonitor = value;
                 if (isMonitor)
                 {
@@ -27,11 +31,9 @@ namespace Ado.Net_in_Wpf.Entities
                 {
                     Monitor = "No";
                 }
-            } }
+            }
+        }
         public string Monitor { get; set; }
-
-
-
         public Student Clone()
         {
             Student newStudent = new Student()
