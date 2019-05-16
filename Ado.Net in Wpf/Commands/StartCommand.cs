@@ -25,7 +25,6 @@ namespace Ado.Net_in_Wpf.Commands
         {
             return true;
         }
-
         public void Execute(object parameter)
         {
             FileInfo fileInfo = new FileInfo("config.json");
@@ -35,29 +34,27 @@ namespace Ado.Net_in_Wpf.Commands
                 StudentViewModel = new StudentViewModel();
                 StudentView studentView = new StudentView(StudentViewModel);
                 studentView.ShowDialog();
-                //StudentViewModel.AllStudents = new ObservableCollection<Student>(App.DB.GetStudents());
+                StudentViewModel.AllStudents = new ObservableCollection<Student>(App.DB.GetStudents());
             }
             else
             {
                 MessageBoxResult messageBox = MessageBox.Show("No");
 
 
-
-
                 ////////////////////after open DBConnectionView
-                DataBaseConnectionViewModel dataBaseConnectionVM = new DataBaseConnectionViewModel();
-                DatabaseConnectionView databaseConnectionView = new DatabaseConnectionView(dataBaseConnectionVM);
+                //DataBaseConnectionViewModel dataBaseConnectionVM = new DataBaseConnectionViewModel();
+                //DatabaseConnectionView databaseConnectionView = new DatabaseConnectionView(dataBaseConnectionVM);
                 
-                databaseConnectionView.ShowDialog();
-                //DatabaseConnection databaseConnection = new DatabaseConnection()
-                //{
-                //    DataBaseName = "dbname",
-                //    DataSource = "dsource",
-                //    Password = "pswrd",
-                //    UserId = "Userid"
-                //};
-                //Config config = new Config(dbconnection);
-                //config.SeriailizeToJson();
+                //databaseConnectionView.ShowDialog();
+                DatabaseConnection databaseConnection = new DatabaseConnection()
+                {
+                    DataBaseName = "dbname",
+                    DataSource = "dsource",
+                    Password = "pswrd",
+                    UserId = "Userid"
+                };
+                Config config = new Config(databaseConnection);
+                config.SeriailizeToJson();
             }
         }
     }

@@ -15,9 +15,18 @@ namespace Ado.Net_in_Wpf.Entities
         public int Age { get; set; }
         public bool IsMonitor { get; set; }
 
-        internal Student Clone()
+        public Student Clone()
         {
-            throw new NotImplementedException();
+            Student newStudent = new Student()
+            {
+                Id = this.Id,
+                No = this.No,
+                Name = this.Name,
+                Surname = this.Surname,
+                Age = this.Age,
+                IsMonitor = this.IsMonitor
+            };
+            return newStudent;
         }
     }
 }

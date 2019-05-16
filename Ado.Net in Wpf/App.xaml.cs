@@ -20,7 +20,8 @@ namespace Ado.Net_in_Wpf
             AppDomain currentDomain = AppDomain.CurrentDomain;
             currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
             DatabaseConnection databaseConnection = new DatabaseConnection() {
-                DataBaseName="groupDb",DataSource= @"DOCUMENTS-ПК\MYSQLSERVERMSSQL", Password="admin", UserId="admin"
+                DataBaseName="StudentDb",DataSource= @"DOCUMENTS-ПК\MYSQLSERVERMSSQL", IntergratedSecurity="SSID",UserId="",
+                Password=""
             };
 
             DB = new DataAccessLayer(databaseConnection);

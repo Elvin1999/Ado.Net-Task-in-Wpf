@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Ado.Net_in_Wpf
 {
@@ -20,6 +21,7 @@ namespace Ado.Net_in_Wpf
             builder.DataSource = DatabaseConnection.DataSource;
             builder.InitialCatalog = DatabaseConnection.DataBaseName;
             builder.UserID = DatabaseConnection.UserId;
+            builder.IntegratedSecurity = true;
             builder.Password = DatabaseConnection.Password;
             ConnectionString = builder.ToString();
         }
@@ -28,8 +30,7 @@ namespace Ado.Net_in_Wpf
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
-                string cmdText = @"select Groups.*,Filial.Name as Filial_Name,Filial.Id as 
-                       FilialId from Groups Inner Join Filial ON Groups.Filial_Id=Filial.Id";
+                string cmdText = @"select *from Students";
                 using (SqlCommand cmd = new SqlCommand(cmdText, conn))
                 {
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -57,16 +58,16 @@ namespace Ado.Net_in_Wpf
                         //product.Barcode = Convert.ToString(reader[2]);
                         //product.Price = Convert.ToDecimal(reader[3]);
 
-                        //group.Id = Convert.ToInt32(reader[nameof(group.Id)]);
-                        //group.Name = Convert.ToString(reader[nameof(group.Name)]);
-                        //group.Level_Id = Convert.ToInt32(reader[nameof(group.Level_Id)]);
-                        //group.Subject_Id = Convert.ToInt32(reader[nameof(group.Subject_Id)]);
-                        //group.Filial_Id = Convert.ToInt32(reader[nameof(group.Filial_Id)]);
-                        //group.Filial.Id = Convert.ToInt32(reader["FilialId"]);
-                        //group.Filial.Name = Convert.ToString(reader["Filial_Name"]);
-                        //group.Note = reader.IsDBNull(reader.GetOrdinal("Note")) ? null : reader.GetString(reader.GetOrdinal("Note"));
+                        student.Id = Convert.ToInt32(reader[nameof(student.Id)]);
+                        student.Name = Convert.ToString(reader[nameof(student.Name)]);
+                        student.Surname = Convert.ToString(reader[nameof(student.Surname)]);
+                        student.Age = Convert.ToInt32(reader[nameof(student.Age)]);
+                        student.IsMonitor = Convert.ToBoolean(reader[nameof(student.IsMonitor)]);
+                        MessageBoxResult mb = MessageBox.Show(student.Name);
+                        //student.Filial.Name = Convert.ToString(reader["Filial_Name"]);
+                        //student.Note = reader.IsDBNull(reader.GetOrdinal("Note")) ? null : reader.GetString(reader.GetOrdinal("Note"));
 
-                        //groups.Add(group);
+                        students.Add(student);
                     }
                     return students;
 
