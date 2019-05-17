@@ -38,15 +38,6 @@ namespace Ado.Net_in_Wpf
                 try
                 {
                     conn.Open();
-                    App.IsConnectedSuccessfully = true;
-                }
-                catch (Exception)
-                {
-                    App.IsConnectedSuccessfully = false;
-                }
-
-                if (App.IsConnectedSuccessfully)
-                {
                     string cmdText = @"select *from Students";
                     using (SqlCommand cmd = new SqlCommand(cmdText, conn))
                     {
@@ -74,6 +65,12 @@ namespace Ado.Net_in_Wpf
                         return students;
                     }
                 }
+                catch (Exception)
+                {
+                   
+                }
+
+         
 
             }
             return null;
