@@ -43,7 +43,7 @@
                     <TextBox Width="120" Text="{Binding DatabaseConnection.DataBaseName,Mode=TwoWay}" Height="35" Margin="10,1,0,0" FontSize="18"></TextBox>
                     <TextBox Width="120" Text="{Binding DatabaseConnection.UserId,Mode=TwoWay}" Height="35" IsEnabled="False" Margin="10,1,0,0" FontSize="18"></TextBox>
                     <PasswordBox Width="120"  Height="35" IsEnabled="False" Margin="10,1,0,0" FontSize="18"></PasswordBox>
-                    <TextBox Width="120" Text="{Binding DatabaseConnection.IntergratedSecurity,Mode=TwoWay}" Height="35" Margin="10,1,0,0" FontSize="18"></TextBox>
+                    <CheckBox Width="120" IsChecked="{Binding DatabaseConnection.IntergratedSecurity,Mode=TwoWay}" Height="35" Margin="10,1,0,0" FontSize="18"></CheckBox>
                     <Button Width="120" Height="40"  Command="{Binding ConnectCommand}" Content="Connect" Margin="20">
 
                 </Button>

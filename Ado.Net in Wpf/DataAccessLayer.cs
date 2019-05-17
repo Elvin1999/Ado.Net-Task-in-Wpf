@@ -22,8 +22,7 @@ namespace Ado.Net_in_Wpf
             builder.UserID = DatabaseConnection.UserId;
             if(DatabaseConnection.Password!=null)
             builder.Password = DatabaseConnection.Password;
-            // builder.IntegratedSecurity = databaseConnection.IntergratedSecurity;
-            builder.IntegratedSecurity = true;
+            builder.IntegratedSecurity = databaseConnection.IntergratedSecurity;
             ConnectionString = builder.ToString();
         }
         int counter = 0;

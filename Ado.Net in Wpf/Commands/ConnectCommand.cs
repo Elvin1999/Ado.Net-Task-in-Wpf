@@ -48,18 +48,9 @@ namespace Ado.Net_in_Wpf.Commands
             else
             {
                 MessageBoxResult messageBox1 = MessageBox.Show("No");
-                ////////////////////after open DBConnectionView
                 DatabaseConnectionView databaseConnectionView = new DatabaseConnectionView(DBConnectionVM);
                 databaseConnectionView.ShowDialog();
-                DatabaseConnection databaseConnection = new DatabaseConnection()
-                {//example
-                    //DataBaseName = "StudentDb",
-                    //DataSource = @"DOCUMENTS-ПК\MYSQLSEjhnknnjRVERMSSQL",
-                    //IntergratedSecurity = true,
-                    //UserId = "",
-                    //Password = ""
-                };
-
+                DatabaseConnection databaseConnection = new DatabaseConnection();
                 Config config1 = new Config(databaseConnection);
 
                 config1.SeriailizeToJson();
