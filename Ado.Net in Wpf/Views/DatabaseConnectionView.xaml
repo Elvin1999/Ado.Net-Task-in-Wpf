@@ -41,12 +41,27 @@
             <StackPanel Orientation="Vertical" Margin="10,0,0,0">
                     <TextBox Width="120" Text="{Binding DatabaseConnection.DataSource,Mode=TwoWay}" Height="35" Margin="10,1,0,0" FontSize="18"></TextBox>
                     <TextBox Width="120" Text="{Binding DatabaseConnection.DataBaseName,Mode=TwoWay}" Height="35" Margin="10,1,0,0" FontSize="18"></TextBox>
-                    <TextBox Width="120" Text="{Binding DatabaseConnection.UserId,Mode=TwoWay}" Height="35" IsEnabled="False" Margin="10,1,0,0" FontSize="18"></TextBox>
-                    <PasswordBox Width="120"  Height="35" IsEnabled="False" Margin="10,1,0,0" FontSize="18"></PasswordBox>
-                    <CheckBox Width="120" IsChecked="{Binding DatabaseConnection.IntergratedSecurity,Mode=TwoWay}" Height="35" Margin="10,1,0,0" FontSize="18"></CheckBox>
+                    <TextBox Name="UserIdTxtb" Width="120" Text="{Binding DatabaseConnection.UserId,Mode=TwoWay}" Height="35" IsEnabled="False" Margin="10,1,0,0" FontSize="18"></TextBox>
+                    <PasswordBox Name="PasswordTxtb" Width="120" Height="35" IsEnabled="False" Margin="10,1,0,0" FontSize="18"></PasswordBox>
+                    <CheckBox Width="120" IsChecked="{Binding DatabaseConnection.IntergratedSecurity,Mode=TwoWay}" Command="{Binding changeCheckboxCommand}"
+                              Height="35" Margin="10,1,0,0" FontSize="18">
+                        <CheckBox.Style>
+                            <Style TargetType="{x:Type CheckBox}">
+                                <Setter Property="Content" Value="No"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding State,Mode=TwoWay}" Value="1">
+                                        <Setter Property="Content" Value="Yes"></Setter>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding State,Mode=TwoWay}" Value="2">
+                                        <Setter Property="Content" Value="No"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </CheckBox.Style>
+                    </CheckBox>
                     <Button Width="120" Height="40"  Command="{Binding ConnectCommand}" Content="Connect" Margin="20">
-
-                </Button>
+                       
+                    </Button>
                 <Button Width="130" Height="40" FontSize="11" Content="Sql Server authentication" Margin="20,-15,20,20">
                  
                 </Button>

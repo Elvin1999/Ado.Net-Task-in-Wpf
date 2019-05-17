@@ -16,7 +16,21 @@ namespace Ado.Net_in_Wpf.ViewModels
             DatabaseConnection = new DatabaseConnection();
         }
         public ConnectCommand ConnectCommand => new ConnectCommand(this);
+        public ChangeCheckboxCommand changeCheckboxCommand => new ChangeCheckboxCommand(this);
         private DatabaseConnection databaseConnection;
+        private int state;
+        public int State
+        {
+            get
+            {
+                return state;
+            }
+            set
+            {
+                state = value;
+                OnPropertyCanged(new PropertyChangedEventArgs(nameof(State)));
+            }
+        }
         public DatabaseConnection DatabaseConnection
         {
             get
