@@ -12,17 +12,21 @@ namespace Ado.Net_in_Wpf
     {
         public string ConnectionString { get; set; }
         public DatabaseConnection DatabaseConnection { get; set; }
+
         public DataAccessLayer(DatabaseConnection databaseConnection)
         {
             DatabaseConnection = databaseConnection;
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             builder.DataSource = DatabaseConnection.DataSource;
             builder.InitialCatalog = DatabaseConnection.DataBaseName;
-            if(DatabaseConnection.UserId!=null)
-            builder.UserID = DatabaseConnection.UserId;
-            if(DatabaseConnection.Password!=null)
-            builder.Password = DatabaseConnection.Password;
-            builder.IntegratedSecurity = databaseConnection.IntergratedSecurity;
+
+            if (DatabaseConnection.Password != null && DatabaseConnection.UserId != null)
+            {
+                builder.UserID = DatabaseConnection.UserId;
+                builder.Password = DatabaseConnection.Password;
+                builder.IntegratedSecurity = false;
+            }
+
             ConnectionString = builder.ToString();
         }
         int counter = 0;

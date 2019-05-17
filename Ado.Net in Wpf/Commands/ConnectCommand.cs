@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Ado.Net_in_Wpf.Commands
@@ -32,7 +33,13 @@ namespace Ado.Net_in_Wpf.Commands
 
         public void Execute(object parameter)
         {
+
             DatabaseConnection = DBConnectionVM.DatabaseConnection;
+            var res = (parameter as PasswordBox).Password;
+            if (res != null)
+            {
+                DatabaseConnection.Password = res;
+            }
             Config config = new Config(DatabaseConnection);
             config.SeriailizeToJson();
             StudentViewModel = new StudentViewModel();

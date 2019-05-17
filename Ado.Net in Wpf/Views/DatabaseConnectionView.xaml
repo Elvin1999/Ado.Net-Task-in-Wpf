@@ -41,8 +41,36 @@
             <StackPanel Orientation="Vertical" Margin="10,0,0,0">
                     <TextBox Width="120" Text="{Binding DatabaseConnection.DataSource,Mode=TwoWay}" Height="35" Margin="10,1,0,0" FontSize="18"></TextBox>
                     <TextBox Width="120" Text="{Binding DatabaseConnection.DataBaseName,Mode=TwoWay}" Height="35" Margin="10,1,0,0" FontSize="18"></TextBox>
-                    <TextBox Name="UserIdTxtb" Width="120" Text="{Binding DatabaseConnection.UserId,Mode=TwoWay}" Height="35" IsEnabled="False" Margin="10,1,0,0" FontSize="18"></TextBox>
-                    <PasswordBox Name="PasswordTxtb" Width="120" Height="35" IsEnabled="False" Margin="10,1,0,0" FontSize="18"></PasswordBox>
+                    <TextBox Name="UserIdTxtb" Width="120" Text="{Binding DatabaseConnection.UserId,Mode=TwoWay}" Height="35" Margin="10,1,0,0" FontSize="18">
+                        <TextBox.Style>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="IsEnabled" Value="True"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding State,Mode=TwoWay}" Value="2">
+                                        <Setter Property="IsEnabled" Value="True"></Setter>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding State,Mode=TwoWay}" Value="1">
+                                        <Setter Property="IsEnabled" Value="False"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                    <PasswordBox Name="PasswordTxtb" Width="120" Height="35" Margin="10,1,0,0" FontSize="18">
+                        <PasswordBox.Style>
+                            <Style TargetType="{x:Type PasswordBox}">
+                                <Setter Property="IsEnabled" Value="True"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding State,Mode=TwoWay}" Value="2">
+                                        <Setter Property="IsEnabled" Value="True"></Setter>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding State,Mode=TwoWay}" Value="1">
+                                        <Setter Property="IsEnabled" Value="False"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </PasswordBox.Style>
+                    </PasswordBox>
                     <CheckBox Width="120" IsChecked="{Binding DatabaseConnection.IntergratedSecurity,Mode=TwoWay}" Command="{Binding changeCheckboxCommand}"
                               Height="35" Margin="10,1,0,0" FontSize="18">
                         <CheckBox.Style>
@@ -59,7 +87,7 @@
                             </Style>
                         </CheckBox.Style>
                     </CheckBox>
-                    <Button Width="120" Height="40"  Command="{Binding ConnectCommand}" Content="Connect" Margin="20">
+                    <Button Width="120" Height="40"  Command="{Binding ConnectCommand}" CommandParameter="{Binding ElementName=PasswordTxtb}" Content="Connect" Margin="20">
                        
                     </Button>
                 <Button Width="130" Height="40" FontSize="11" Content="Sql Server authentication" Margin="20,-15,20,20">

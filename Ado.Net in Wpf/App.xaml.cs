@@ -23,7 +23,7 @@ namespace Ado.Net_in_Wpf
             DatabaseConnection databaseConnection = new DatabaseConnection()
             {
                 DataBaseName = "",
-                DataSource = @"",
+                DataSource = @"localhost",
                 IntergratedSecurity = true,
                 UserId = "",
                 Password = ""

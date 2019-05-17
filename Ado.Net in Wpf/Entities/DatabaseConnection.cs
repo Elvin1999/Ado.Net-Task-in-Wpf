@@ -8,8 +8,8 @@ namespace Ado.Net_in_Wpf.Entities
 {
     public class DatabaseConnection
     {
-        public string DataSource { get; set; }
-        public string DataBaseName { get; set; }
+        public string DataSource { get; set; } = "localhost";
+        public string DataBaseName { get; set; } = "localDb";
         private string userId;
         public string UserId
         {
@@ -19,13 +19,14 @@ namespace Ado.Net_in_Wpf.Entities
             }
             set
             {
-                if (value != String.Empty || value != null)
+
+                if (value == null || value==String.Empty)
                 {
-                    userId = value;
+                    userId = "user";
                 }
                 else
                 {
-                    userId = String.Empty;
+                    userId = value;
                 }
             }
         }
@@ -39,15 +40,14 @@ namespace Ado.Net_in_Wpf.Entities
             }
             set
             {
-                if (value != String.Empty || value != null)
+                if (value == null || value==String.Empty)
                 {
-                    password = value;
+                    password = "password";
                 }
                 else
                 {
-                    password = String.Empty;
+                    password = value;
                 }
-
             }
         }
         public bool IntergratedSecurity { get; set; }

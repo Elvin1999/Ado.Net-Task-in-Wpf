@@ -17,8 +17,7 @@ namespace Ado.Net_in_Wpf.Entities
             this.DatabaseConnection = databaseConnection;
         }
         public Config()
-        {
-                
+        {          
         }
         public void SeriailizeToJson()
         {
