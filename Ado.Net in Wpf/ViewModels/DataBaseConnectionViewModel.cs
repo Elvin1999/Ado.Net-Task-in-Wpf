@@ -1,4 +1,5 @@
-﻿using Ado.Net_in_Wpf.Entities;
+﻿using Ado.Net_in_Wpf.Commands;
+using Ado.Net_in_Wpf.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace Ado.Net_in_Wpf.ViewModels
         {
             DatabaseConnection = new DatabaseConnection();
         }
+        public ConnectCommand ConnectCommand => new ConnectCommand(this);
         private DatabaseConnection databaseConnection;
         public DatabaseConnection DatabaseConnection
         {

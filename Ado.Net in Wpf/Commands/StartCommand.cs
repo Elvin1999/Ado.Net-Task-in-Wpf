@@ -1,6 +1,6 @@
 ﻿using Ado.Net_in_Wpf.Entities;
 using Ado.Net_in_Wpf.ViewModels;
-using Ado.Net_in_Wpf.Views;             
+using Ado.Net_in_Wpf.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -35,9 +35,33 @@ namespace Ado.Net_in_Wpf.Commands
                 Config config = new Config();
                 config.DeserializeFromJson();
                 App.DB = new DataAccessLayer(config.GetConnectionElement());
-                StudentViewModel.AllStudents = new ObservableCollection<Student>(App.DB.GetStudents());
-                StudentView studentView = new StudentView(StudentViewModel);
-                studentView.ShowDialog();
+                if (App.DB.GetStudents() != null)
+                {
+                    StudentViewModel.AllStudents = new ObservableCollection<Student>(App.DB.GetStudents());
+                    StudentView studentView = new StudentView(StudentViewModel);
+                    studentView.ShowDialog();
+                }
+                else
+                {
+                    MessageBoxResult messageBox1 = MessageBox.Show("No");
+                    ////////////////////after open DBConnectionView
+                    DataBaseConnectionViewModel dataBaseConnectionVM = new DataBaseConnectionViewModel();
+                    DatabaseConnectionView databaseConnectionView = new DatabaseConnectionView(dataBaseConnectionVM);
+                    databaseConnectionView.ShowDialog();
+                    //DatabaseConnection databaseConnection = new DatabaseConnection()
+                    //{//example
+                    //    DataBaseName = "StudentDb",
+                    //    DataSource = @"DOCUMENTS-ПК\MYSQLSEjhnknnjRVERMSSQL",
+                    //    IntergratedSecurity = true,
+                    //    UserId = "",
+                    //    Password = ""
+                    //};
+
+                    //Config config1 = new Config(databaseConnection);
+
+                    //config1.SeriailizeToJson();
+                }
+
             }
             else
             {
@@ -46,17 +70,16 @@ namespace Ado.Net_in_Wpf.Commands
                 DataBaseConnectionViewModel dataBaseConnectionVM = new DataBaseConnectionViewModel();
                 DatabaseConnectionView databaseConnectionView = new DatabaseConnectionView(dataBaseConnectionVM);
                 databaseConnectionView.ShowDialog();
-                DatabaseConnection databaseConnection = new DatabaseConnection()
-                {
-                    DataBaseName = "StudentDb",
-                    DataSource = @"DOCUMENTS-ПК\MYSQLSERVERMSSQL",
-                    IntergratedSecurity = true,
-                    UserId = "",
-                    Password = ""
-                };
-                Config config = new Config(databaseConnection);
-
-                config.SeriailizeToJson();
+                //DatabaseConnection databaseConnection = new DatabaseConnection()
+                //{
+                //    DataBaseName = "StudentDb",
+                //    DataSource = @"DOCUMENTS-ПК\MYSQLzzzSERVERMSSQL",
+                //    IntergratedSecurity = true,
+                //    UserId = "",
+                //    Password = ""
+                //};
+                //Config config = new Config(databaseConnection);
+                //config.SeriailizeToJson();
 
             }
         }

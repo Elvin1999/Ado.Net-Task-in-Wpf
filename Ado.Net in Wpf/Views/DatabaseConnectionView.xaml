@@ -15,8 +15,17 @@
                 <Canvas.Left>50</Canvas.Left>
             </Rectangle>
             <Label Content="Database Connection" FontSize="35" FontFamily="Comic Sans MS" Margin="70,0,0,0"></Label>
-
-        <StackPanel Orientation="Horizontal" Margin="100,100,0,0">
+            <Button Width="50" Height="50" Name="ExitBtn"  Background="{StaticResource FirstColor}" Margin="670,20,0,0" Click="ExitBtn_Click"
+                                
+                                Content="X" FontFamily="Comic Sans MS" FontSize="24" Foreground="Black" Style="{StaticResource NotDefaultButton}"
+                                >
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <StackPanel Orientation="Horizontal" Margin="100,100,0,0">
             <StackPanel Orientation="Vertical">
                 <Label Content="Server Name" FontSize="20"></Label>
                 <Label Content="Database Name" FontSize="20"></Label>
@@ -24,13 +33,18 @@
                 <Label Content="Password" FontSize="20"></Label>
                 <Label Content="Integrated Security" FontSize="20"></Label>
             </StackPanel>
+                <!--    public string DataSource { get; set; }
+        public string DataBaseName { get; set; }
+        public string UserId { get; set; }
+        public string Password { get; set; }
+        public bool IntergratedSecurity { get; set; }-->
             <StackPanel Orientation="Vertical" Margin="10,0,0,0">
-                <TextBox Width="120" Height="35" Margin="10,1,0,0" FontSize="18"></TextBox>
-                <TextBox Width="120" Height="35" Margin="10,1,0,0" FontSize="18"></TextBox>
-                <TextBox Width="120" Height="35" IsEnabled="False" Margin="10,1,0,0" FontSize="18"></TextBox>
-                <PasswordBox Width="120" Height="35" IsEnabled="False" Margin="10,1,0,0" FontSize="18"></PasswordBox>
-                <TextBox Width="120" Height="35" Margin="10,1,0,0" Text="SSIP" FontSize="18"></TextBox>
-                <Button Width="120" Height="40" Content="Connect" Margin="20">
+                    <TextBox Width="120" Text="{Binding DatabaseConnection.DataSource,Mode=TwoWay}" Height="35" Margin="10,1,0,0" FontSize="18"></TextBox>
+                    <TextBox Width="120" Text="{Binding DatabaseConnection.DataBaseName,Mode=TwoWay}" Height="35" Margin="10,1,0,0" FontSize="18"></TextBox>
+                    <TextBox Width="120" Text="{Binding DatabaseConnection.UserId,Mode=TwoWay}" Height="35" IsEnabled="False" Margin="10,1,0,0" FontSize="18"></TextBox>
+                    <PasswordBox Width="120"  Height="35" IsEnabled="False" Margin="10,1,0,0" FontSize="18"></PasswordBox>
+                    <TextBox Width="120" Text="{Binding DatabaseConnection.IntergratedSecurity,Mode=TwoWay}" Height="35" Margin="10,1,0,0" FontSize="18"></TextBox>
+                    <Button Width="120" Height="40"  Command="{Binding ConnectCommand}" Content="Connect" Margin="20">
 
                 </Button>
                 <Button Width="130" Height="40" FontSize="11" Content="Sql Server authentication" Margin="20,-15,20,20">

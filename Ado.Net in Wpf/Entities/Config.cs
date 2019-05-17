@@ -27,11 +27,6 @@ namespace Ado.Net_in_Wpf.Entities
                 var item = JsonConvert.SerializeObject(DatabaseConnection);
                 sw.WriteLine(item);
             }
-            //using (var streamWriter = new StreamWriter("exception.txt"))
-            //{
-            //    streamWriter.WriteLine(e.Message);
-
-            //}
         }
         public void DeserializeFromJson()
         {

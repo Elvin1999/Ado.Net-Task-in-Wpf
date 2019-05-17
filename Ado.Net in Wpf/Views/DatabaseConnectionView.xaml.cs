@@ -27,5 +27,9 @@ namespace Ado.Net_in_Wpf.Views
             this.DBConnectionVM = DBConnectionVM;
             DataContext = DBConnectionVM;
         }
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

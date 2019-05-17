@@ -20,13 +20,18 @@ namespace Ado.Net_in_Wpf
             AppDomain currentDomain = AppDomain.CurrentDomain;
             currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
 
-            //DatabaseConnection databaseConnection = new DatabaseConnection() {
-            //    DataBaseName="StudentDb",DataSource= @"DOCUMENTS-ПК\MYSQLSERVERMSSQL", IntergratedSecurity=true,UserId="",
-            //    Password=""
-            //};
-            //DB = new DataAccessLayer(databaseConnection);
+            DatabaseConnection databaseConnection = new DatabaseConnection()
+            {
+                DataBaseName = "",
+                DataSource = @"",
+                IntergratedSecurity = true,
+                UserId = "",
+                Password = ""
+            };
+            DB = new DataAccessLayer(databaseConnection);
 
         }
+        public static bool IsConnectedSuccessfully { get; set; }
         public static DataAccessLayer DB;
         static void MyHandler(object sender, UnhandledExceptionEventArgs args)
         {

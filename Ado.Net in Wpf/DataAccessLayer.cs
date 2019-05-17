@@ -8,55 +8,72 @@ using System.Threading.Tasks;
 using System.Windows;
 namespace Ado.Net_in_Wpf
 {
-   public class DataAccessLayer
+    public class DataAccessLayer
     {
         public string ConnectionString { get; set; }
-        public DatabaseConnection  DatabaseConnection { get; set; }   
+        public DatabaseConnection DatabaseConnection { get; set; }
         public DataAccessLayer(DatabaseConnection databaseConnection)
         {
             DatabaseConnection = databaseConnection;
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             builder.DataSource = DatabaseConnection.DataSource;
             builder.InitialCatalog = DatabaseConnection.DataBaseName;
+            if(DatabaseConnection.UserId!=null)
             builder.UserID = DatabaseConnection.UserId;
-            builder.IntegratedSecurity = true;
+            if(DatabaseConnection.Password!=null)
             builder.Password = DatabaseConnection.Password;
+            // builder.IntegratedSecurity = databaseConnection.IntergratedSecurity;
+            builder.IntegratedSecurity = true;
             ConnectionString = builder.ToString();
         }
         int counter = 0;
+        List<Student> students;
         public List<Student> GetStudents()
         {
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
-                conn.Open();
-                string cmdText = @"select *from Students";
-                using (SqlCommand cmd = new SqlCommand(cmdText, conn))
+                try
                 {
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    List<Student> students = new List<Student>();
-                    while (reader.Read())
-                    {
-                        Student student = new Student();
-                        student.No = ++counter;
-                        student.Id = Convert.ToInt32(reader[nameof(student.Id)]);
-                        student.Name = Convert.ToString(reader[nameof(student.Name)]);
-                        student.Surname = Convert.ToString(reader[nameof(student.Surname)]);
-                        student.Age = Convert.ToInt32(reader[nameof(student.Age)]);
-                        //student.IsMonitor = Convert.ToBoolean(reader[nameof(student.IsMonitor)]);
-                        //student.IsMonitor = reader.GetBoolean(reader.GetOrdinal("IsMonitor"));
-                       
-                        var text = Convert.ToString(reader[nameof(student.IsMonitor)]);
-                        student.IsMonitor = Convert.ToBoolean(text);
-          
-                        //student.Filial.Name = Convert.ToString(reader["Filial_Name"]);
-                        //student.Note = reader.IsDBNull(reader.GetOrdinal("Note")) ? null : reader.GetString(reader.GetOrdinal("Note"));
-                        students.Add(student);
-                    }
-                    return students;
-
+                    conn.Open();
+                    App.IsConnectedSuccessfully = true;
                 }
+                catch (Exception)
+                {
+                    App.IsConnectedSuccessfully = false;
+                }
+
+                if (App.IsConnectedSuccessfully)
+                {
+                    string cmdText = @"select *from Students";
+                    using (SqlCommand cmd = new SqlCommand(cmdText, conn))
+                    {
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        students = new List<Student>();
+                        while (reader.Read())
+                        {
+                            Student student = new Student();
+                            student.No = ++counter;
+                            student.Id = Convert.ToInt32(reader[nameof(student.Id)]);
+                            student.Name = Convert.ToString(reader[nameof(student.Name)]);
+                            student.Surname = Convert.ToString(reader[nameof(student.Surname)]);
+                            student.Age = Convert.ToInt32(reader[nameof(student.Age)]);
+                            //student.IsMonitor = Convert.ToBoolean(reader[nameof(student.IsMonitor)]);
+                            //student.IsMonitor = reader.GetBoolean(reader.GetOrdinal("IsMonitor"));
+
+                            var text = Convert.ToString(reader[nameof(student.IsMonitor)]);
+                            student.IsMonitor = Convert.ToBoolean(text);
+
+                            //student.Filial.Name = Convert.ToString(reader["Filial_Name"]);
+                            //student.Note = reader.IsDBNull(reader.GetOrdinal("Note")) ? null : reader.GetString(reader.GetOrdinal("Note"));
+                            students.Add(student);
+                        }
+                        return students;
+                    }
+                }
+
             }
+            return null;
         }
 
         //public int AddProduct(Group group)
